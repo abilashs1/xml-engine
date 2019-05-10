@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Steps>
+    <step name="AmountEntry">
+        <result value="success" next="ValidateAmount"/>
+        <result value="error" next="ErrorDisplay"/>        
+    </step>
+  <step name="ValidateAmount">
+    <result value="success" next="ProcessTip"/>
+    <result value="error" next="ErrorDisplay"/>    
+  </step>
+  <step name="ProcessTip">
+    <result value="success" next="Display"/>
+    <result value="error" next="ErrorDisplay"/>
+  </step>
+  <step name="Display">
+    <result value="success" next="FLOW_END" return="success"/>
+    <result value="error" next="ErrorDisplay"/>
+  </step>
+
+  <default>
+    <result value="error" next="FLOW_END" return="Error"/>
+  </default>
+</Steps>
